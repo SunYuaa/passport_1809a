@@ -29,4 +29,4 @@ Route::post('/user/login','User\LoginController@login');
 //
 Route::post('/demo/reg/','Test\DemoController@reg');
 Route::post('/demo/login/','Test\DemoController@login');
-Route::get('/demo/center/','Test\DemoControlelr@center');
+Route::post('/demo/center/','Test\DemoControlelr@center');
