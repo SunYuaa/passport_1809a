@@ -70,10 +70,9 @@ class DemoController extends Controller
     //个人中心
     public function center()
     {
-    	$res = file_get_contents('php://input');
-    	$data = json_decode($res);
+    	$uid = $_GET['uid'];
 
-        $userInfo = UserModel::where(['id'=>$data->uid])->first()->toArray();
+        $userInfo = UserModel::where(['id'=>$uid])->first()->toArray();
         if($userInfo){
             $response = [
                 'errcode' => 0,
