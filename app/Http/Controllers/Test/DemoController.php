@@ -67,4 +67,27 @@ class DemoController extends Controller
         }
         return json_encode($response);
     }
+    //个人中心
+    public function center()
+    {
+    	$res = file_get_contents('php://input');
+    	$data = json_decode($res);
+
+        $userInfo = UserModel::where(['id'=>$data->uid])->first()->toArray();
+        if($userInfo){
+            $response = [
+                'errcode' => 0,
+                'errmsg' => 'success',
+                'data' => [
+                    'userInfo' => $userInfo
+                ]
+            ];
+        }else{
+            $response = [
+                'errcode' => 1002,
+                'errmsg' => '用户不存在'
+            ];
+        }
+        return json_encode($response);
+    }
 }
